@@ -3,14 +3,13 @@ import Date from "../../components/Date";
 import Layout from "../../components/Layout";
 import { getAllPostIds, getPostData } from "../../lib/posts";
 import utilStyles from '../../styles/utils.module.css';
-import { useRouter } from 'next/router';
 
 export async function getStaticPaths() {
     const paths = await getAllPostIds();
     return {
         paths,
-        // fallback: false,    
-        fallback: true,
+        // fallback: true,    
+        fallback: false,
     };
 }
 
@@ -24,9 +23,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function Post({ postData }) {
-    const router = useRouter();
-    const query = router.query;
-
     return (
         <Layout>
             <Head>
